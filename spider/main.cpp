@@ -104,7 +104,13 @@ int main() {
         ConfigParser config("config.ini");
 
         // Инициализация БД
-        Database db(config.get("database", "connection_string"));
+        Database db(
+            config.get("database", "host"),
+            config.get("database", "port"),
+            config.get("database", "dbname"),
+            config.get("database", "user"),
+            config.get("database", "password")
+        );
 
         // Настройка пула потоков
         int numThreads = config.getInt("spider", "num_threads");

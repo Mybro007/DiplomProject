@@ -6,6 +6,10 @@ add_executable(SpiderApp
 	http_utils.h
 	http_utils.cpp
 	link.h
+	database.h
+	database.cpp
+	config_parser.h
+	config_parser.cpp
 	)
 
 target_compile_features(SpiderApp PRIVATE cxx_std_17) 

@@ -10,7 +10,17 @@ namespace ba = boost::algorithm;
 namespace bl = boost::locale;
 using namespace pqxx;
 
-Database::Database(const string& conn_str) : conn_(conn_str) {
+Database::Database(const string& host,
+    const string& port,
+    const string& dbname,
+    const string& user,
+    const string& password) :
+    conn_("host=" + host +
+        " port=" + port +
+        " dbname=" + dbname +
+        " user=" + user +
+        " password=" + password)
+{
     if (!conn_.is_open()) {
         throw runtime_error("Failed to connect to database");
     }

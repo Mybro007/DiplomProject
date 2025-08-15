@@ -26,7 +26,13 @@ int main(int argc, char* argv[]) {
         ConfigParser config("config.ini");
 
         // Инициализация БД
-        Database db(config.get("database", "connection_string"));
+        Database db(
+            config.get("database", "host"),
+            config.get("database", "port"),
+            config.get("database", "dbname"),
+            config.get("database", "user"),
+            config.get("database", "password")
+        );
 
         // Настройка сервера
         auto const address = net::ip::make_address("0.0.0.0");
